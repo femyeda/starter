@@ -6,13 +6,13 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "db:generate": "prisma generate --schema=./db/schema.prisma",
-    "db:migrate": "prisma migrate dev --schema=./db/schema.prisma --skip-seed",
-    "db:reset": "prisma migrate reset --schema=./db/schema.prisma --skip-seed",
-    "db:push": "prisma db push --schema=./db/schema.prisma --skip-seed",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --skip-seed",
+    "db:reset": "prisma migrate reset --skip-seed",
+    "db:push": "prisma db push --skip-seed",
     "db:seed": "npx prisma db seed",
-    "db:studio": "prisma studio --schema=./db/schema.prisma",
-    "now-build": "yarn generate --schema=./db/schema.prisma && next build"
+    "db:studio": "prisma studio",
+    "postinstall": "yarn db:generate"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.1",
@@ -33,6 +33,7 @@
     "superagent": "^6.1.0"
   },
   "prisma": {
+    "schema": "./db/schema.prisma",
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} db/seed.ts"
   },
   "devDependencies": {
